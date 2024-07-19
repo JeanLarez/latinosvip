@@ -13,7 +13,6 @@ export const Router = () => (
       element={
         <Layout>
           <NavBar />
-          <Home />
         </Layout>
       }
     />
