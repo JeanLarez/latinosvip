@@ -30,13 +30,6 @@
 #          user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
 #          env: "your-app-env-name"
 
-
-
-
-
-
-
-
 # name: Deploy
 
 # on:
@@ -65,17 +58,16 @@
 #         run: |
 #           npm run build
 
-      # - name: Deploy to ZCloud
-      #   uses: zcloud-ws/zcloud-deploy-action@main
-      #   with:
-      #     user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
-      #     env: "your-app-env-name"
-      #     env-token: ${{ secrets.ZCLOUD_ENV_TOKEN }}
-      #     dir: './'
-      #     image: 'your-docker-image'
-      #     app: 'your-app-slug'
-      #     copy-env-vars-from: 'another-env'  # Opcional
-
+# - name: Deploy to ZCloud
+#   uses: zcloud-ws/zcloud-deploy-action@main
+#   with:
+#     user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
+#     env: "your-app-env-name"
+#     env-token: ${{ secrets.ZCLOUD_ENV_TOKEN }}
+#     dir: './'
+#     image: 'your-docker-image'
+#     app: 'your-app-slug'
+#     copy-env-vars-from: 'another-env'  # Opcional
 
 name: React App Github Deploy
 
@@ -88,15 +80,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
-  steps:
-    - name: Checkout
-      uses: actions/checkout@v4
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
 
-    - name: Install & build
-      run: npm i && npm run build
+      - name: Install & build
+        run: npm i && npm run build
 
-    - name: Deploy  
-      uses: JamesIves/github-pages-deploy-action@v4
-      with:
-        branch: gh-pages
-        folder: dist 
+      - name: Deploy
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages
+          folder: dist
