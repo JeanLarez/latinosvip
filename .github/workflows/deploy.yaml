@@ -1,27 +1,27 @@
-# name: Deploy
-# on:
+#name: Deploy
+#on:
 #  push:
 #    branches: ['main']
-# jobs:
+#jobs:
 #  deploy:
 #    runs-on: ubuntu-latest
 #    steps:
 #      - name: Checkout code
 #        uses: actions/checkout@v4
-
+#
 #      - name: Install Node.js
 #        uses: actions/setup-node@v4
 #        with:
 #          node-version: '20.x'
-
+#
 #      - name: Install Dependencies
 #        run: |
 #          npm i
-
+#
 #      - name: Run Check
 #        run: |
 #          npm run build
-
+#
 #      - uses: actions/checkout@v4
 #      - name: Deploy
 #        uses: zcloud-ws/zcloud-deploy-action@main
@@ -29,66 +29,3 @@
 #          # Add your ZCLOUD_USER_TOKEN to your repository secrets
 #          user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
 #          env: "your-app-env-name"
-
-# name: Deploy
-
-# on:
-#   push:
-#     branches:
-#       - 'main'
-
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
-
-#     steps:
-#       - name: Checkout code
-#         uses: actions/checkout@v4
-
-#       - name: Install Node.js
-#         uses: actions/setup-node@v4
-#         with:
-#           node-version: '20.x'
-
-#       - name: Install Dependencies
-#         run: |
-#           npm install
-
-#       - name: Run Build
-#         run: |
-#           npm run build
-
-# - name: Deploy to ZCloud
-#   uses: zcloud-ws/zcloud-deploy-action@main
-#   with:
-#     user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
-#     env: "your-app-env-name"
-#     env-token: ${{ secrets.ZCLOUD_ENV_TOKEN }}
-#     dir: './'
-#     image: 'your-docker-image'
-#     app: 'your-app-slug'
-#     copy-env-vars-from: 'another-env'  # Opcional
-
-name: React App Github Deploy
-
-on:
-  push:
-    branch:
-      - "main"
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Install & build
-        run: npm i && npm run build
-
-      - name: Deploy
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: dist
