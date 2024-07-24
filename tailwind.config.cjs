@@ -26,5 +26,5 @@ module.exports = {
     },
   },
   plugins: [],
-  base: "https://JeanLarez.github.io/latinosvip",
+  base: "https://jeanlarez.github.io/latinosvip",
 }
