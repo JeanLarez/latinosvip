@@ -60,7 +60,7 @@ const NavBar = () => {
     <header className="sticky top-0 z-10 flex items-center font-mont font-bold md:flex md:items-center">
       <a
         href="https://"
-        className="relative left-1/2  top-0 z-50 block h-20 w-36 -translate-x-2/4 overflow-hidden whitespace-nowrap bg-[url('src/assets/icon/latinoswhite.svg')] bg-center bg-no-repeat indent-[101%]"
+        className="relative left-1/2  top-0 z-50 block h-20 w-36 -translate-x-2/4 overflow-hidden whitespace-nowrap bg-[url('./src/assets/icon/latinoswhite.svg')] bg-center bg-no-repeat indent-[101%]"
       >
         Home
       </a>
