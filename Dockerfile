@@ -21,4 +21,4 @@ USER node:node
 
 WORKDIR /app
 
-ENTRYPOINT ["serve", "-p", "3000",  "-s", "/app"]
+ENTRYPOINT ["serve", "-p", "5173",  "-s", "/app"]

@@ -28,4 +28,4 @@ jobs:
        with:
          # Add your ZCLOUD_USER_TOKEN to your repository secrets
          user-token: ${{ secrets.ZCLOUD_USER_TOKEN }}
-         env: "your-app-env-name"
+         env: ${{ secrets.ZCLOUD_ENV_NAME }}
