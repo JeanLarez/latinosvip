@@ -20,8 +20,8 @@ jobs:
 
       - name: Build image
         run: |
-          docker build . --tag ghcr.io/JeanLarez/latinosvip:latest
-          docker push ghcr.io/JeanLarez/latinosvip:latest
+          docker build . --tag ghcr.io/jeanlarez/latinosvip:latest
+          docker push ghcr.io/jeanlarez/latinosvip:latest
 
   deploy:
         needs: create-docker-image
@@ -35,9 +35,9 @@ jobs:
                 sshpass -p ${{secrets.AUTH_PASS}} ssh -o StrictHosdtKeyChecking=no ${{secrets.AUTH_SERVER}} << EOF
                  cd /root/latinosvip/
                  docker login ghcr.io -u JeanLarez -p ${{secrets.TOKEN_DEPLOY_LATINOSVIP}}}
-                 docker pull ghcr.io/JeanLarez/latinosvip:latest
+                 docker pull ghcr.io/jeanlarez/latinosvip:latest
                  docker stop latinosvip && docker rm latinosvip
                  docker run -d \
                   --name latinosvip \
-                  ghcr.io/JeanLarez/latinosvip:latest
+                  ghcr.io/jeanlarez/latinosvip:latest
                   EOF
