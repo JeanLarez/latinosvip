@@ -1,0 +1,43 @@
+name: publish
+
+on:
+  push:
+    branches: ["main"]
+
+jobs:
+  create-docker-image:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v2
+
+      - name: Login to Github Container Registry
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{github.actor}}
+          password: ${{secrets.TOKEN_DEPLOY_LATINOSVIP}}
+
+      - name: Build image
+        run: |
+          docker build . --tag ghcr.io/JeanLarez/latinosvip:latest
+          docker push ghcr.io/JeanLarez/latinosvip:latest
+
+  deploy:
+        needs: create-docker-image
+        runs-on: ubuntu-latest
+        steps:
+            - name: Install sshpass
+              run: sudo apt-get install -y sshpass
+
+            - name: SSH into server
+              run: |
+                sshpass -p ${{secrets.AUTH_PASS}} ssh -o StrictHosdtKeyChecking=no ${{secrets.AUTH_SERVER}} << EOF
+                 cd /root/latinosvip/
+                 docker login ghcr.io -u JeanLarez -p ${{secrets.TOKEN_DEPLOY_LATINOSVIP}}}
+                 docker pull ghcr.io/JeanLarez/latinosvip:latest
+                 docker stop latinosvip && docker rm latinosvip
+                 docker run -d \
+                  --name latinosvip \
+                  ghcr.io/JeanLarez/latinosvip:latest
+                  EOF
