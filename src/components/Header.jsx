@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Subitems from "./Subitems";
 
-const NavBar = () => {
+export const NavBar = () => {
   const [hidden, setHidden] = useState(true);
   const [visibleSubmenu, setVisibleSubmenu] = useState(null); // Estado unificado para los submenús
   const [hoveringSubmenu, setHoveringSubmenu] = useState(null); // Estado para saber si el mouse está sobre el submenú
@@ -57,10 +57,10 @@ const NavBar = () => {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex items-center font-mont font-bold md:flex md:items-center">
+    <header className="sticky top-0 z-50 flex items-center font-mont font-bold md:flex md:items-center bg-white/85 backdrop-blur-sm md:bg-transparent">
       <a
         href="https://"
-        className="relative left-1/2  top-0 z-50 block h-20 w-36 -translate-x-2/4 overflow-hidden whitespace-nowrap bg-[url('./src/assets/icon/latinoswhite.svg')] bg-center bg-no-repeat indent-[101%]"
+        className="relative left-1/2 top-0 z-50 block h-20 w-36 -translate-x-2/4 overflow-hidden whitespace-nowrap bg-[url('./src/assets/icon/latinoswhite.svg')] bg-center bg-no-repeat indent-[101%]"
       >
         Home
       </a>
@@ -195,8 +195,8 @@ const NavBar = () => {
         id="mobile-menu"
         className={
           hidden
-            ? "absolute top-24 hidden w-full bg-white text-black"
-            : "absolute top-24 w-full origin-top animate-open-menu bg-white text-sm text-black"
+            ? "absolute top-20 hidden w-full bg-white text-black  bg-white/85 backdrop-blur-sm"
+            : "absolute top-20 w-full origin-top animate-open-menu bg-white text-sm text-black bg-white/85 backdrop-blur-sm"
         }
       >
         <nav
@@ -306,5 +306,3 @@ const NavBar = () => {
     </header>
   );
 };
-
-export default NavBar;
