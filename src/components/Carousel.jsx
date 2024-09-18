@@ -7,14 +7,20 @@ import Slider from 'react-slick';
 
 export const Carousel = () => {
   const slides = [
+    // {
+    //   url: "src/assets/imgs/1.webp",
+    // },
+    // {
+    //   url: "src/assets/imgs/8.webp",
+    // },
+    // {
+    //   url: "src/assets/imgs/10.webp",
+    // },
     {
-      url: "src/assets/imgs/1.jpg",
+      url: "src/assets/imgs/IMG-20230923-WA0070.webp",
     },
     {
-      url: "src/assets/imgs/8.jpg",
-    },
-    {
-      url: "src/assets/imgs/10.jpg",
+      url: "src/assets/imgs/IMG-20230928-WA0038.webp",
     }
   ];
 
@@ -52,7 +58,7 @@ export const Carousel = () => {
     <div className="relative h-[670px] w-full">
       {/* Texto estático en el centro */}
       <div className="absolute inset-0 z-20 flex flex-col items-center justify-center text-center text-white">
-        <h1 className="text-4xl font-bold tracking-wide md:text-6xl">
+        <h1 className="text-4xl font-bold tracking-wide md:text-7xl">
           BIENVENIDOS
         </h1>
         <p className="my-4 text-lg md:text-2xl">
@@ -74,7 +80,7 @@ export const Carousel = () => {
               style={{
                 backgroundImage: `url(${slide.url})`,
               }}
-              className="h-[670px] w-full bg-cover bg-center"
+              className="h-[700px] w-full bg-cover bg-center"
             ></div>
           </div>
         ))}
